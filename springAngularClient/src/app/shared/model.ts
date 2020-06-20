@@ -1,8 +1,8 @@
 export class Student {
-   Id: number ;
-  firstName: string;
+   id: number ;
+  first_Name: string;
 
-  lastName: string;
+  last_Name: string;
 //Set<Course> courses;
 
 }

@@ -1,16 +1,96 @@
-<form #form="ngForm" (submit)="onSubmit(form)" autocomplete="off">
+
+  <html>
+  <title>Homepage</title>
+  <head>LIST OF STUDENTS</head><body>
+    <!-- Note menu -->
+ <!--   <form #form="ngForm" (submit)="getAll()" autocomplete="off">-->
+      <!--
+        <input type="hidden" name="EmployeeID" #EmployeeID="ngModel" [(ngModel)]="apiService.Smodel.Id">
+      -->
+
+    <div class="container">
+
+    <table border="Bold" >
+      <tr><td>
+          first name</td>
+
+        <td>
+          last name
+        </td>
+        <td>
+          id
+        </td>
+      </tr>
+      <tr *ngFor="let st of students">
+        <td>
+
+          {{st.first_Name}}
+
+        </td>
+        <td>
+
+          {{st.last_Name}}
+
+        </td>
+        <td>
+
+          {{st.id}}
+
+        </td>
+      </tr>
+    </table>
+
+
+
+    </div></body></html>
+<!--<ul *ngFor="let st of students">
+<li>
+  {{st.id}}
+</li></ul>-->
 <!--
-  <input type="hidden" name="EmployeeID" #EmployeeID="ngModel" [(ngModel)]="apiService.Smodel.Id">
--->
-  <div class="form-group">
-    <label>FIRST NAME</label>
-    <input name="FullName" #FullName="ngModel" [(ngModel)]="apiService.Smodel.firstName" class="form-control" required>
-    <div class="validation-error" *ngIf="FullName.invalid && FullName.touched">This field is required.</div>
-  </div>
-  <div class="form-group">//
-    <label>LAST NAME</label>
-    <input name="Position" #Position="ngModel" [(ngModel)]="apiService.Smodel.lastName" class="form-control">
-  </div>
+    </div>
+
+    &lt;!&ndash; Note content &ndash;&gt;
+    <div class="row" style="margin-top: 28px;">
+      &lt;!&ndash; Notebooks Menu &ndash;&gt;
+      <div class="col-md-3">
+        <br>
+        <div class="list-group list-group-flush">
+          <a class="list-group-item list-group-item-action" (click)="getAll()">
+            <i class="fa fa-book"></i>&nbsp;All
+          </a>
+          &lt;!&ndash; Notebook List &ndash;&gt;
+
+
+        </div>
+      </div>
+
+      &lt;!&ndash; Notes Panel &ndash;&gt;
+      <div class="col-md-9">
+        <div class="row">
+          <div class="col-md-12">
+            &lt;!&ndash; Message if there are no notes &ndash;&gt;
+
+          </div>
+        </div>
+        <div class="row">
+          &lt;!&ndash; Note list &ndash;&gt;
+
+        </div>
+      </div>
+    </div>
+  </div></form>
+  </body></html>-->
+  <!--
+    <div class="form-group">
+      <label>FIRST NAME</label>
+      <input name="FullName" #FullName="ngModel" [(ngModel)]="apiService.Smodel.firstName" class="form-control" required>
+      <div class="validation-error" *ngIf="FullName.invalid && FullName.touched">This field is required.</div>
+    </div>
+    <div class="form-group">//
+      <label>LAST NAME</label>
+      <input name="Position" #Position="ngModel" [(ngModel)]="apiService.Smodel.lastName" class="form-control">
+    </div>-->
 <!--  <div class="form-row">
     <div class="form-group col-md-6">
       <label>EMP CODE</label>
@@ -22,7 +102,3 @@
     </div>
 
   </div>-->
-  <div class="form-group">
-    <button type="submit" [disabled]="form.invalid" class="btn btn-lg btn-block">SUBMIT</button>
-  </div>
-</form>

@@ -8,7 +8,13 @@ import { CoursesComponent } from './courses/courses.component';
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule} from "@angular/forms";
 import {ApiService} from "./shared/api.service";
-
+import {Router,Routes} from "@angular/router"
+/*const appRoute:Routes=[
+  {
+ path:'students',
+  component:StudentComponent
+}
+];*/
 @NgModule({
   declarations: [
     AppComponent,
