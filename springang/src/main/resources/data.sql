@@ -1,0 +1,1 @@
+UPDATE student SET first_name='Ahmed' WHERE id=1 ;
