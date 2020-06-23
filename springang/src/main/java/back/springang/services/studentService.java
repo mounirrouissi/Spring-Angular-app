@@ -7,15 +7,35 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+import java.util.Random;
+
 @Service
-@AllArgsConstructor
 @Slf4j
 public class studentService {
 
-  private final back.springang.repository.studentRepo studentRepo;
+  private studentRepo studentRepository;
+    @Autowired
+    public studentService(studentRepo studentRepository) {
+        this.studentRepository=studentRepository;
+    }
+
+
+    public Student update(Student st)
+    {
+
+        st.setId(5545L);
+        st.setFirst_Name("fold");
+        st.setLast_Name("ffs");
+        return st;
+    }
+
+/*
+    save student
+*/
     public Student save(Student student)
     {
-        Student saved=studentRepo.save(buildStudent(student));
+        Student saved=studentRepository.save(buildStudent(student));
         student.setId(saved.getId());
         return saved;
 
@@ -23,8 +43,13 @@ public class studentService {
     }
 
     private Student buildStudent(Student student) {
-        return Student.builder().firstName(student.getFirstName())
-                .lastName(student.getLastName()).courses(student.getCourses()).build();
+        return Student.builder().first_Name(student.getFirst_Name())
+                .last_Name(student.getLast_Name()).build();
     }
 
+
+    public Optional<Student> findStudent(Long id) {
+        return studentRepository.findById(id);
+
+    }
 }

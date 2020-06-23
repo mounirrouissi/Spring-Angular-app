@@ -1,13 +1,15 @@
 package  back.springang.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
-import org.hibernate.annotations.GeneratorType;
-import org.hibernate.annotations.ManyToAny;
-import org.hibernate.annotations.Type;
+import org.hibernate.annotations.*;
 import org.hibernate.id.UUIDGenerator;
 
 
 import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import java.math.BigInteger;
 import java.util.List;
 import java.util.Set;
 @Getter
@@ -18,15 +20,18 @@ import java.util.Set;
 @Entity
 @Builder
 public class Student {
-
     @Id
-@GeneratedValue(strategy = GenerationType.AUTO)
-    private Long Id;
+    @GeneratedValue
+    private Long id;
     @Column
-    private String firstName;
+    private String first_Name;
     @Column
-    private String lastName;
-@ManyToMany(cascade = CascadeType.ALL)
-    private Set<Course> courses;
+    private String last_Name;
+
+
+    @OnDelete(action = OnDeleteAction.CASCADE)
+@OneToMany(mappedBy = "student",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+private Set<Course> courses;
+
 
 }

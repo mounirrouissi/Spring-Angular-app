@@ -1,1 +1,1 @@
-UPDATE student SET first_name='Ahmed' WHERE id=1 ;
+delete from student where id=2;

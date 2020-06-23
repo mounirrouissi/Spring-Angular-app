@@ -1,9 +1,8 @@
-package com.springangular.repository;
+package back.springang.repository;
 
 import back.springang.models.Course;
-import org.springframework.data.repository.CrudRepository;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-@Repository
-public interface courseRepo extends CrudRepository<Course,Long> {
-}
+public interface courseRepo extends JpaRepository<Course,Long> {
+
+        }

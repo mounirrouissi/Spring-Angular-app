@@ -1,1 +1,45 @@
-<p>courses works!</p>
+<html><head></head>-<body>
+
+
+<table border="Bold" >
+  <tr><td>
+    id</td>
+
+    <td>
+       name
+    </td>
+    <td>
+      student
+    </td> <td>
+      diffic
+    </td>
+  </tr>
+  <tr *ngFor="let st of courses">
+    <td>
+
+      {{st.courseId}}
+
+    </td>
+    <td>
+
+      {{st.courseName}}
+
+    </td>
+    <td>
+
+      {{st.student.first_Name}}
+
+    </td>
+    <td>
+
+      {{st.difficulty}}
+
+    </td>
+    <td>
+      <a class="delete"></a>
+      <i class="ui-icon-trash"></i>
+    </td>
+  </tr>
+</table>
+
+</body></html>

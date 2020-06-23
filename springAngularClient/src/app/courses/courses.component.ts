@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import {ApiService} from "../shared/api.service";
+import {Course} from "../shared/model";
+
+
 
 @Component({
   selector: 'app-courses',
@@ -6,10 +10,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./courses.component.sass']
 })
 export class CoursesComponent implements OnInit {
-
-  constructor() { }
+  courses:Course[]=[]
+  constructor(private apiService: ApiService) { }
 
   ngOnInit(): void {
+    this.getcourses();
   }
+   getcourses() {
+    this.apiService.getAllCourses().subscribe(
+      res=>{
+this.courses=res;
+      }
+    )
 
+  }
 }

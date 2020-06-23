@@ -1,24 +1,28 @@
 package  back.springang.models;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import java.lang.reflect.Type;
+import java.math.BigInteger;
 import java.util.Collection;
 import java.util.Set;
-
+@Getter
+@Setter
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Builder
 public class Course {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue
     private Long courseId;
-    @ManyToMany(cascade = CascadeType.ALL)
-    private Set<Student> student;
+  @ManyToOne
+  private Student student;
+
 @Column
     private String courseName;
 @Enumerated(value = EnumType.STRING)

@@ -6,7 +6,7 @@ import {Student} from "../shared/model";
 @Component({
   selector: 'app-student',
   templateUrl: './student.component.html',
-  styleUrls: ['./student.component.sass']
+  styleUrls: ['./student.component.css']
 })
 export class StudentComponent implements OnInit {
   students:Student[]=[];
@@ -18,7 +18,7 @@ export class StudentComponent implements OnInit {
 
 
 getAll(){
-  this.apiService.getAll().subscribe(
+  this.apiService.getAllStudents().subscribe(
     res=>{
 this.students=res;
 console.log("it works")
@@ -28,4 +28,22 @@ console.log("it works")
     }
   );
   }
+
+   kill(student:Student) {
+    if(confirm('do you want to delete this student ?')){
+    this.apiService.killAll(student.id).subscribe(
+      res=>
+      {
+        let index = this.students.indexOf(student);
+        this.students.splice(index,1);
+alert("student deleted successfully")
+      },
+      error=>{
+        alert("error occured during deleting ")
+      }
+    )  }
+
+  }
+
+
 }

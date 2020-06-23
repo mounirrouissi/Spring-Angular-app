@@ -1,2 +1,6 @@
-GET http://localhost:8080/students
 
+
+GET http://localhost:8080/students
+###
+
+DELETE  http://localhost:8080/students/2
