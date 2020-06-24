@@ -1,4 +1,4 @@
-package  back.springang.models;
+package back.springang.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
@@ -12,6 +12,7 @@ import javax.persistence.Entity;
 import java.math.BigInteger;
 import java.util.List;
 import java.util.Set;
+
 @Getter
 @Setter
 @Data
@@ -27,11 +28,8 @@ public class Student {
     private String first_Name;
     @Column
     private String last_Name;
-
-
     @OnDelete(action = OnDeleteAction.CASCADE)
-@OneToMany(mappedBy = "student",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-private Set<Course> courses;
-
+    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Set<Course> courses;
 
 }

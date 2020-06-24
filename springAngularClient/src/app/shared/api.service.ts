@@ -21,4 +21,9 @@ return  this.http.get<Student[]>(this.url + '/students');
   killAll(id: number):Observable<any>{
   return this.http.delete<any>(this.url+'/students/'+id);
   }
+
+  doRegistration(student: Student) {
+    return  this.http.post(this.url+'/registration',student,{responseType:'text' as 'json'});
+
+  }
 }

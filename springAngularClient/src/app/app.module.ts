@@ -9,13 +9,15 @@ import {HttpClientModule} from '@angular/common/http';
 import {FormsModule} from "@angular/forms";
 import {ApiService} from "./shared/api.service";
 import { StudentDetailsComponent } from './student-details/student-details.component';
+import { RegistrationComponent } from './registration/registration.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     StudentComponent,
     CoursesComponent,
-    StudentDetailsComponent
+    StudentDetailsComponent,
+    RegistrationComponent
   ],
   imports: [
     BrowserModule,
