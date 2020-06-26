@@ -28,8 +28,12 @@ public class Student {
     private String first_Name;
     @Column
     private String last_Name;
-    @OnDelete(action = OnDeleteAction.CASCADE)
     @OneToMany(mappedBy = "student", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private Set<Course> courses;
-
+    @JsonIgnore
+    private List<Course> courses;
+public Student(Long id,String fist,String last){
+    this.id=id;
+    this.first_Name=fist;
+    this.last_Name=last;
+}
 }

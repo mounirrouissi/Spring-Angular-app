@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {Student} from "../shared/model";
 import {ApiService} from "../shared/api.service";
+import {last} from "rxjs/operators";
+import {Observable} from "rxjs";
+
 
 @Component({
   selector: 'app-registration',
@@ -14,8 +17,12 @@ student:Student=new Student();
 
   ngOnInit(): void {
   }
-  public registerNow(){
-    let resp=this.studentService.doRegistration(this.student);
-    resp.subscribe((data)=>this.message=data);
+  public registerNow() {
+    this.studentService.addStudent(this.student).subscribe(async (data)=>this.message="Registered successfully ");
+    this.reloadData();
+  }
+
+  private reloadData() {
+    this.student=new Student();
   }
 }

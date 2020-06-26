@@ -1,8 +1,10 @@
 package back.springang.models;
 
+import back.springang.repository.studentRepo;
 import lombok.*;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
 import java.lang.reflect.Type;
@@ -28,5 +30,7 @@ public class Course {
     private String courseName;
     @Enumerated(value = EnumType.STRING)
     private Difficulty difficulty;
+
+
 
 }

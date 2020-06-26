@@ -18,12 +18,24 @@ return  this.http.get<Student[]>(this.url + '/students');
     return  this.http.get<Course[]>(this.url + '/courses');
   }
 
-  killAll(id: number):Observable<any>{
+  killAllStudents(id: number):Observable<any>{
   return this.http.delete<any>(this.url+'/students/'+id);
   }
 
-  doRegistration(student: Student) {
-    return  this.http.post(this.url+'/registration',student,{responseType:'text' as 'json'});
+  addStudent(student: Student) {
+    return  this.http.post(this.url+'/registrationStudent',student,{responseType:'text' as 'json'});
 
+  }
+
+  reload():Observable<any> {
+    return this.http.get(this.url+'/registration');
+  }
+
+  killAllCourses(courseId: number):Observable<any> {
+    return this.http.delete<any>(this.url+"/courses/"+courseId)
+  }
+
+  addCourse(course: Course) {
+    return this.http.post(this.url+'/registrationCourse',course,{responseType:'text' as 'json'});
   }
 }

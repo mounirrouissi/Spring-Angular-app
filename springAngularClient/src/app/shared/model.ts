@@ -8,12 +8,12 @@ export class Student {
 }
 export class Course {
   courseId: number ;
+  StudentId:number;
   courseName: string;
-
-  student: Student;
   difficulty:{
     HARD,EASY,MEDIUM
   }
+
 //Set<Course> courses;
 
 }

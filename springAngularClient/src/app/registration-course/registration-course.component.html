@@ -15,25 +15,32 @@
                                 required *</small></span></legend>
 
           <div class="form-group">
-            <label for="Name"><span class="req">* </span> Name: <small>This will be your login student
+            <label for="Name"><span class="req">* </span> Name: <small>This will be course
               name</small> </label>
-            <input required type="text" [(ngModel)]="student.first_Name" name="name" id="name"
-                   class="form-control phone" maxlength="28" placeholder="Enter your fullname..." />
+            <input required type="text" [(ngModel)]="course.courseName" name="name" id="name"
+                   class="form-control phone" maxlength="28" placeholder="Enter course name..." />
           </div>
 
           <div class="form-group">
-            <label><span class="req">* </span> Last Name: </label>
-            <input class="form-control" type="text" [(ngModel)]="student.last_Name" name="email"
+            <label><span class="req">* </span> difficulty: </label>
+            <input class="form-control" type="text" [(ngModel)]="course.difficulty" name="email"
                    id="txt" required
-                   placeholder="Enter Last name" />
+                   placeholder="Enter difficulty" />
             <div id="errFirst"></div>
           </div>
 
           <div class="form-group">
             <label><span class="req">* </span> id : </label>
-            <input class="form-control" type="text" [(ngModel)]="student.id" name="experience"
-                   placeholder="Student id" required />
+            <input class="form-control" type="text" [(ngModel)]="course.courseId" name="experience"
+                   placeholder="course id" required />
             <div id="errLast"></div>
+          </div>
+
+          <div class="form-group">
+            <label><span class="req">* </span> students : </label>
+            <input class="form-control" type="text" [(ngModel)]="course.StudentId" name="experience"
+                   placeholder="referenced student id" required />
+            <div id="errLast2"></div>
           </div>
 
 
@@ -42,7 +49,7 @@
           </div>
         </fieldset>
       </form><!-- ends register form -->
-      <!-- second for to fiter student-->
+      <!-- second for to fiter course-->
     </div><!-- ends col-6 -->
 
   </div>

@@ -10,6 +10,7 @@ import {FormsModule} from "@angular/forms";
 import {ApiService} from "./shared/api.service";
 import { StudentDetailsComponent } from './student-details/student-details.component';
 import { RegistrationComponent } from './registration/registration.component';
+import { RegistrationCourseComponent } from './registration-course/registration-course.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { RegistrationComponent } from './registration/registration.component';
     StudentComponent,
     CoursesComponent,
     StudentDetailsComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    RegistrationCourseComponent
   ],
   imports: [
     BrowserModule,
