@@ -5,10 +5,11 @@ import {CoursesComponent} from "./courses/courses.component";
 import {StudentDetailsComponent} from './student-details/student-details.component'
 import {RegistrationComponent} from "./registration/registration.component";
 import {RegistrationCourseComponent} from "./registration-course/registration-course.component";
+import { CourseDetailComponent } from './course-detail/course-detail.component';
 
 const routes: Routes=[
   {path:'students', component:StudentComponent},
-  {path:'details/:id', component:StudentDetailsComponent},
+  {path:'courses/:id', component:CourseDetailComponent},
 
   {path:'courses', pathMatch:'full', component:CoursesComponent},
   {path:'registrationStudent', pathMatch:'full', component:RegistrationComponent},

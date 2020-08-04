@@ -29,15 +29,9 @@
             <div id="errFirst"></div>
           </div>
 
-          <div class="form-group">
-            <label><span class="req">* </span> id : </label>
-            <input class="form-control" type="text" [(ngModel)]="course.courseId" name="experience"
-                   placeholder="course id" required />
-            <div id="errLast"></div>
-          </div>
 
           <div class="form-group">
-            <input class="btn btn-success" type="submit" name="submit_reg" value="Register" (click)="registerNow()">
+            <input class="btn btn-success" type="submit" name="submit_reg" value="Register" (click)="UpdateCourse()">
           </div>
         </fieldset>
       </form><!-- ends register form -->

@@ -1,11 +1,11 @@
 <ul class="courses">
   <li *ngFor="let course of courses">
-    <a routerLink="/detail/{{course.courseId}}">
+    <a routerLink="/courses/{{course.courseId}}" >
 <span class="badge">
-  {{course.courseName}}</span>
-      {{course.difficulty}}
-    </a>
-    <button class="delete" title="delete hero"
+  {{course.courseId}}</span>
+      {{course.difficulty}}    <span class="badge">
+        {{course.courseName}}</span></a>
+    <button class="delete" title="delete course"
             (click)="kill(course)">x</button>
   </li>
 </ul>

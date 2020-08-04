@@ -7,14 +7,23 @@ import {Observable} from "rxjs";
   providedIn: 'root'
 })
 export class ApiService {
-private url: String='http://localhost:8080';
+
+
+
+  /** GET course by id. Will 404 if id not found */
+  getCourse(id: number): Observable<Course> {
+    return this.http.get<Course>(this.url+'/courses/'+id);
+  }
+
+private url: String='http://localhost:8083';
 constructor(private http: HttpClient) {
 }
 
 getAllStudents():Observable<Student[]>{
 return  this.http.get<Student[]>(this.url + '/students');
 }
-  getAllCourses():Observable<Course[]>{
+
+getAllCourses():Observable<Course[]>{
     return  this.http.get<Course[]>(this.url + '/courses');
   }
 
@@ -37,5 +46,9 @@ return  this.http.get<Student[]>(this.url + '/students');
 
   addCourse(course: Course) {
     return this.http.post(this.url+'/registrationCourse',course,{responseType:'text' as 'json'});
+  }
+
+UpdateCourse(course: Course) {
+    return this.http.post(this.url+'/courses/"+courseId/"+update',course,{responseType:'text' as 'json'});
   }
 }

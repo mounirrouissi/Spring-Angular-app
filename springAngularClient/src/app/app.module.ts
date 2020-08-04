@@ -11,6 +11,9 @@ import {ApiService} from "./shared/api.service";
 import { StudentDetailsComponent } from './student-details/student-details.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { RegistrationCourseComponent } from './registration-course/registration-course.component';
+import { UpdateStudentComponent } from './update-student/update-student.component';
+import { UpdateCourseComponent } from './update-course/update-course.component';
+import { CourseDetailComponent } from './course-detail/course-detail.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +22,10 @@ import { RegistrationCourseComponent } from './registration-course/registration-
     CoursesComponent,
     StudentDetailsComponent,
     RegistrationComponent,
-    RegistrationCourseComponent
+    RegistrationCourseComponent,
+    UpdateStudentComponent,
+    UpdateCourseComponent,
+    CourseDetailComponent
   ],
   imports: [
     BrowserModule,

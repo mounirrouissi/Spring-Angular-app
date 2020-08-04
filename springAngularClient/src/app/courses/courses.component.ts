@@ -10,7 +10,7 @@ import {Course} from "../shared/model";
   styleUrls: ['./courses.component.css']
 })
 export class CoursesComponent implements OnInit {
-  courses:Course[]=[]
+  courses:Course[]=[];
 
   constructor(private apiService: ApiService) { }
 
