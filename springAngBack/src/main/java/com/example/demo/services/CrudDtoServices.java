@@ -33,10 +33,6 @@ public class CrudDtoServices {
         course.setDifficulty(courseDto.getDifficulty());
         return course;
     }
-
-
-
-
 /*    public Course convertToCourseEntity(CourseDto courseDto) {
         //Student st = this.studentRepository.findById(courseDto.getStudent_id()).get();
         Course entity = new Course(courseDto.getId(), courseDto.getCourseName(), courseDto.getDifficulty());
