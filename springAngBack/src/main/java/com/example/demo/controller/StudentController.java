@@ -37,6 +37,11 @@ public class StudentController {
         return null;
     }
 
+    @PostMapping("/students")
+    public StudentDto create(@RequestBody StudentDto studentDto) {
+        return studentService.createStudent(studentDto);
+    }
+    
     @PutMapping("/students/{id}/update")
     public StudentDto update(@PathVariable("id")Long id, @RequestBody @Validated StudentDto studentDto , BindingResult result)
     {

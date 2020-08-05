@@ -53,6 +53,16 @@ public class StudentService {
          */
     }
 
+    public StudentDto createStudent(StudentDto studentDto) {
+        Student studentForSave = new Student();
+        studentForSave = studentMapper.toStudent(studentForSave, studentDto);
+        studentRepository.save(studentForSave);
+        /**
+         * we call the mapper again to create another studentDTO to map the id that has been created in the database
+         */
+        return studentMapper.toStudentDTO(studentForSave);
+    }
+
     public Student findById(Long id) {
         // TODO: Mounir finish this please
         return null;
