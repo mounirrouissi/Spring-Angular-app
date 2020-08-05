@@ -28,7 +28,7 @@ this.courses=res;
 
   kill(course: Course) {
     if(confirm('do you want to delete this course ?')){
-      this.apiService.killAllCourses(course.courseId).subscribe(
+      this.apiService.killCourse(course.courseId).subscribe(
         res=>
         {
           let index = this.courses.indexOf(course);

@@ -7,6 +7,7 @@ import com.example.demo.models.Student;
 import com.example.demo.repositories.CourseRepository;
 import com.example.demo.repositories.StudentRepository;
 import com.example.demo.services.CrudDtoServices;
+import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -28,6 +29,21 @@ public class Controller {
 
     private CourseRepository courseRepository;
 
+    
+    @PostMapping("/courses/add")
+    public void addCourse(@RequestBody CourseDto courseDto)
+    {
+        Course course=crudDtoServices.DtoToCourse(courseDto);
+        courseRepository.save(course);
+    }
+
+    @PostMapping("/students/add")
+    public void addstudent(@RequestBody Student student)
+    {
+        studentRepository.save(student);
+    }
+
+//display
 
     @GetMapping("/students")
     public List<StudentDto> allStudents() {
@@ -50,32 +66,60 @@ public class Controller {
         return listDto;
     }
 
+    //Update
+
     @PutMapping("/students/{id}/update")
-    public Student update(@PathVariable("id")Long id, @RequestBody @Validated StudentDto studentDto , BindingResult result)
+    public ResponseEntity<Student> update(@PathVariable("id")Long id, @RequestBody @Validated StudentDto studentDto , BindingResult result)
     {
         if(result.hasErrors()){
             System.out.println("ERROR in Validation");
         }
         Student st=studentRepository.findById(id).get();
         Student updatedStudent=crudDtoServices.updateStudent(st,studentDto);
-        return updatedStudent;
+        studentRepository.save(updatedStudent);
+        return ResponseEntity.ok(updatedStudent);
 
     }
 
     @PutMapping("/courses/{id}/update")
-    public Course update(@PathVariable("id")Long id, @RequestBody @Validated CourseDto CourseDto , BindingResult result)
+    public ResponseEntity<Course> update(@PathVariable("id")Long id, @RequestBody  CourseDto CourseDto)
     {
-        if(result.hasErrors()){
-            System.out.println("ERROR in Validation");
-        }
         Course course=courseRepository.findById(id).get();
         Course updatedCourse=crudDtoServices.updateCourse(course,CourseDto);
-        return updatedCourse;
+        courseRepository.save(updatedCourse);
+        return ResponseEntity.ok(updatedCourse);
     }
+
+    //Display 1
+
     @GetMapping("/courses/{id}")
-    public Course detailCourse(@PathVariable("id")Long id)
+    public CourseDto detailCourse(@PathVariable("id")Long id)
     {
         Course course=courseRepository.findById(id).get();
-        return course;
+
+        return crudDtoServices.CourseToDto(course);
     }
+    @GetMapping("/students/{id}")
+    public StudentDto detailStudent(@PathVariable("id")Long id)
+    {
+        Student student=studentRepository.findById(id).get();
+
+        return crudDtoServices.studentToDto(student);
+    }
+
+    //Delete
+
+    @DeleteMapping("/students/{id}/delete")
+    public void deleteStudent(@PathVariable("id")Long id)
+    {
+        Student student = studentRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("id unfound :" + id));
+        
+         studentRepository.delete(student);
+    }
+    @DeleteMapping("/courses/{id}/delete")
+    public void deleteCourse(@PathVariable("id")Long id)
+    {
+        Course c = courseRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("id unfound :" + id));
+        courseRepository.delete(c);
+    }  
 }

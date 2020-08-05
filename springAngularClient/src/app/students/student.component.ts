@@ -31,7 +31,7 @@ console.log("it works")
 
    kill(student:Student) {
     if(confirm('do you want to delete this student ?')){
-    this.apiService.killAllStudents(student.id).subscribe(
+    this.apiService.killStudent(student.id).subscribe(
       res=>
       {
         let index = this.students.indexOf(student);

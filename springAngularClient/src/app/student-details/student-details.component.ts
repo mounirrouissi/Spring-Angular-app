@@ -1,6 +1,6 @@
+import { ApiService } from './../shared/api.service';
 import {Component, Input, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
-import {ApiService} from "../shared/api.service";
 import {Student} from "../shared/model";
 import { Location } from '@angular/common';
 
@@ -15,27 +15,26 @@ export class StudentDetailsComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private StudentService: ApiService,
+    private apiService: ApiService,
     private location: Location
   ) {}
 
   ngOnInit(): void {
-   // this.getStudent();
+    this.getStudent();
   }
 
-/*  getStudent(): void {
+ getStudent(): void {
     const id = +this.route.snapshot.paramMap.get('id');
-    this.StudentService.getStudent(id)
-      .subscribe(Student => this.Student = Student);
-  }*/
+    this.apiService.getStudent(id)
+      .subscribe(Student => this.student = Student);
+  }
 
   goBack(): void {
     this.location.back();
   }
-
-/*  save(): void {
-    this.StudentService.update(this.Student)
+ save(): void {
+    this.apiService.UpdateStudent(this.student)
       .subscribe(() => this.goBack());
-  }*/
+  }
 
 }

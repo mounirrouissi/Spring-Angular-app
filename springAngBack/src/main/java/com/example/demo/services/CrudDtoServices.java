@@ -15,16 +15,25 @@ public class CrudDtoServices {
         StudentDto studentDto=modelMapper.map(s,StudentDto.class);
         return studentDto;
     }
+
     public CourseDto CourseToDto(Course s)
     {
         CourseDto CourseDto=modelMapper.map(s,CourseDto.class);
         return CourseDto;
     }
+
+    public Student DtoToStudent(StudentDto studentDto)
+    {
+        Student student=modelMapper.map(studentDto,Student.class);
+        return student;
+    }
+
+
 //update
 
     public Student updateStudent(Student student,StudentDto studentDto){
         student.setFirst_Name(studentDto.getFirst_Name());
-        student.setFirst_Name(studentDto.getFirst_Name());
+        student.setLast_Name(studentDto.getLast_Name());
         return student;
     }
 
@@ -33,6 +42,12 @@ public class CrudDtoServices {
         course.setDifficulty(courseDto.getDifficulty());
         return course;
     }
+
+    public Course DtoToCourse(CourseDto courseDto) {
+         Course course=modelMapper.map(courseDto,Course.class);
+        return course;
+    }
+
 
 
 

@@ -1,11 +1,14 @@
 <div *ngIf="course">
-  <h2>{{course.name | uppercase}} Details</h2>
-  <div><span>id: </span>{{course.id}}</div>
+  <h2>{{course.courseName | uppercase}} Details</h2>
+  <div><span>id: </span>{{course.courseId}}</div>
   <div>
     <label>name:
-      <input [(ngModel)]="course.name" placeholder="name"/>
+      <input [(ngModel)]="course.courseName" placeholder="name"/>
+    </label>
+    <label>difficulty:
+      <input [(ngModel)]="course.difficulty" placeholder="name"/>
     </label>
   </div>
-  <button (click)="goBack()">go back</button>
-  <button (click)="save()">save</button>
+ <button (click)="goBack()">go back</button>
+   <button (click)="save()">save</button>
 </div>

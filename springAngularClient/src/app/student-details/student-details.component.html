@@ -1,4 +1,3 @@
-<p>student-details works!</p>
 <div *ngIf="student">
   <h2>{{student.first_Name | uppercase}} Details</h2>
   <div><span>id: </span>{{student.id}}</div>
@@ -7,6 +6,6 @@
       <input [(ngModel)]="student.first_Name" placeholder="name"/>
     </label>
   </div>
-<!--  <button (click)="goBack()">go back</button>
-  <button (click)="save()">save</button>-->
+<button (click)="goBack()">go back</button>
+   <button (click)="save()">save</button>
 </div>
