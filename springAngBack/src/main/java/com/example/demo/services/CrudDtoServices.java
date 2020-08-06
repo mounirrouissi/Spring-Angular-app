@@ -1,3 +1,4 @@
+/*
 package com.example.demo.services;
 
 import com.example.demo.dto.CourseDto;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class CrudDtoServices {
+
     ModelMapper modelMapper = new ModelMapper();
     public StudentDto studentToDto(Student s)
     {
@@ -52,13 +54,16 @@ public class CrudDtoServices {
 
 
 
+*/
 /*    public Course convertToCourseEntity(CourseDto courseDto) {
         //Student st = this.studentRepository.findById(courseDto.getStudent_id()).get();
         Course entity = new Course(courseDto.getId(), courseDto.getCourseName(), courseDto.getDifficulty());
 
         return entity;
 
-    }*/
+    }*//*
+
 
 
 }
+*/

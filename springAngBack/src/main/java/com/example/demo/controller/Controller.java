@@ -1,3 +1,4 @@
+/*
 package com.example.demo.controller;
 
 import com.example.demo.dto.CourseDto;
@@ -123,3 +124,4 @@ public class Controller {
         courseRepository.delete(c);
     }  
 }
+*/

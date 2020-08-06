@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Course } from '../shared/model';
 import { ApiService } from '../shared/api.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { from } from 'rxjs';
 @Component({
@@ -12,6 +12,7 @@ export class CourseDetailComponent implements OnInit {
  @Input() course: Course;
 
   constructor(
+    private rourter:Router,
     private location:Location,
     private route: ActivatedRoute,
     private apiService: ApiService
@@ -30,5 +31,8 @@ export class CourseDetailComponent implements OnInit {
   }
 save(){
   this.apiService.UpdateCourse(this.course).subscribe(res=>console.log("success"),err=>console.log("errrr"));
+  this.reload();
 }
+  reload() {
+this.rourter.navigate(['/courses']) ; }
 }
