@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import com.example.demo.dto.SignInDto;
 import com.example.demo.dto.StudentDto;
 import com.example.demo.models.Student;
 import com.example.demo.repositories.StudentRepository;
@@ -25,6 +26,12 @@ public class StudentController {
     @Autowired
     private StudentService studentService;
 
+
+    @PostMapping("/sign_in")
+    public ResponseEntity sign(@RequestBody SignInDto signInDto){
+
+        return ResponseEntity.ok(signInDto);
+    }
     @GetMapping("/students")
     public List<StudentDto> allStudents() {
         return studentService.findStudents();
@@ -35,6 +42,7 @@ public class StudentController {
         Student student= studentService.findById(id);
         return studentService.toDto(student);
     }
+
 
     @PostMapping("/students")
     public StudentDto create(@RequestBody StudentDto studentDto) {

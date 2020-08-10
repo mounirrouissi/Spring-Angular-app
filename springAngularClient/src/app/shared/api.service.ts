@@ -1,12 +1,17 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Course, Student } from './model';
+import { Course, Student, signIn } from './model';
 import { Observable } from "rxjs";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
+
+
+  login(signInPayload:signIn) {
+return this.http.post<Student>(this.url+"/sign_in",signInPayload);
+  }
 
 
 

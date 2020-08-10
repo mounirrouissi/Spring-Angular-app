@@ -3,6 +3,7 @@ package com.example.demo.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
+//import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.persistence.*;
 import java.util.List;
@@ -25,7 +26,7 @@ public class Student {
     @OneToMany(mappedBy = "student", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonIgnore
     private List<Course> courses;
-
+private String password;
     public Student(Long id, String fist, String last) {
         this.id = id;
         this.first_Name = fist;

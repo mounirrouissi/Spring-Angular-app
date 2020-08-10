@@ -3,6 +3,7 @@ export class Student {
   first_Name: string;
   last_Name: string;
   // courses: Set<Course> ;
+  passwod:string;
 
 }
 export class Course {
@@ -12,7 +13,12 @@ export class Course {
   difficulty:{
     HARD,EASY,MEDIUM
   }
-
+}
+  export class signIn
+  {
+username:string;
+password:string;
+  }
 //Set<Course> courses;
 
-}
+

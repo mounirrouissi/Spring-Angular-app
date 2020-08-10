@@ -1,8 +1,14 @@
 package com.example.demo.controller;
 
+import com.example.demo.dto.SignInDto;
 import com.example.demo.dto.StudentDto;
 import com.example.demo.models.Student;
 import com.example.demo.repositories.StudentRepository;
+
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -16,9 +22,17 @@ import java.util.List;
 
 @Service
 public class StudentService {
-
+private AuthenticationManager authenticationManager;
     private StudentRepository studentRepository;
     private StudentMapper studentMapper;
+
+
+    public StudentService(AuthenticationManager authenticationManager, StudentRepository studentRepository, StudentMapper studentMapper) {
+        this.authenticationManager = authenticationManager;
+        this.studentRepository = studentRepository;
+        this.studentMapper = studentMapper;
+    }
+
 
     /**
      * we call this dependency injection by constructor.
@@ -26,9 +40,11 @@ public class StudentService {
      *
      * @Autorire private StudentRepository studentRepository;
      */
-    public StudentService(StudentRepository studentRepository, StudentMapper studentMapper) {
-        this.studentRepository = studentRepository;
-        this.studentMapper = studentMapper;
+
+
+    public void login(SignInDto signInDto){
+        Authentication auth=authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(signInDto.getFirst_Name(),signInDto.getPassword()));
+        SecurityContextHolder.getContext().setAuthentication(auth);
     }
 
     public List<StudentDto> findStudents() {

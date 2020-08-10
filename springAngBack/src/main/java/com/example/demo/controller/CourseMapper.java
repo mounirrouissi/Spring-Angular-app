@@ -1,9 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.dto.CourseDto;
-import com.example.demo.dto.StudentDto;
 import com.example.demo.models.Course;
-import com.example.demo.models.Student;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
 

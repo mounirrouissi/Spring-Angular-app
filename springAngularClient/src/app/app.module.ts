@@ -6,13 +6,14 @@ import { AppComponent } from './app.component';
 import { StudentComponent } from './students/student.component';
 import { CoursesComponent } from './courses/courses.component';
 import {HttpClientModule} from '@angular/common/http';
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {ApiService} from "./shared/api.service";
 import { StudentDetailsComponent } from './student-details/student-details.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { RegistrationCourseComponent } from './registration-course/registration-course.component';
 
 import { CourseDetailComponent } from './course-detail/course-detail.component';
+import { MainComponent } from './main/main.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { CourseDetailComponent } from './course-detail/course-detail.component';
     StudentDetailsComponent,
     RegistrationComponent,
     RegistrationCourseComponent,
-    CourseDetailComponent
+    CourseDetailComponent,
+    MainComponent
 
   ],
   imports: [
@@ -31,6 +33,7 @@ import { CourseDetailComponent } from './course-detail/course-detail.component';
     HttpClientModule,
     FormsModule,
     AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [ApiService],
   bootstrap: [AppComponent]
