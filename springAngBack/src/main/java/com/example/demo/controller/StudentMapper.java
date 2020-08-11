@@ -16,8 +16,8 @@ public class StudentMapper {
     }
 
     public Student toStudent(Student student, StudentDto studentDto){
-        student.setFirst_Name(studentDto.getFirst_Name());
-        student.setFirst_Name(studentDto.getFirst_Name());
+        student.setFirstName(studentDto.getFirst_Name());
+        student.setLastName(studentDto.getLast_Name());
         return student;
     }
 }

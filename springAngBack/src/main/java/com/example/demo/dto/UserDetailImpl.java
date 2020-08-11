@@ -33,7 +33,7 @@ public class UserDetailImpl implements UserDetails {
 
     @Override
     public String getUsername() {
-        return student.getFirst_Name();
+        return student.getFirstName();
     }
 
 

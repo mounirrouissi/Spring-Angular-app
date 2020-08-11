@@ -1,6 +1,6 @@
 package com.example.demo.controller;
 
-import com.example.demo.dto.SignInDto;
+import com.example.demo.dto.SignInDtoRequest;
 import com.example.demo.dto.StudentDto;
 import com.example.demo.models.Student;
 import com.example.demo.repositories.StudentRepository;
@@ -42,8 +42,8 @@ private AuthenticationManager authenticationManager;
      */
 
 
-    public void login(SignInDto signInDto){
-        Authentication auth=authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(signInDto.getFirst_Name(),signInDto.getPassword()));
+    public void login(SignInDtoRequest signInDtoRequest){
+        Authentication auth=authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(signInDtoRequest.getFirstName(), signInDtoRequest.getPassword()));
         SecurityContextHolder.getContext().setAuthentication(auth);
     }
 

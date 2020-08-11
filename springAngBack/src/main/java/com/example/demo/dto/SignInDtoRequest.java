@@ -4,7 +4,7 @@ import lombok.Data;
 
 
 @Data
-public class SignInDto {
-    private String first_Name;
+public class SignInDtoRequest {
+    private String firstName;
     private String password;
 }

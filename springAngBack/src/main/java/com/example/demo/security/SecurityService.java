@@ -3,12 +3,12 @@ package com.example.demo.security;
 import com.example.demo.dto.UserDetailImpl;
 import com.example.demo.models.Student;
 import com.example.demo.repositories.StudentRepository;
+
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import java.security.PrivateKey;
 
 @Service
 public class SecurityService implements UserDetailsService {
@@ -21,7 +21,7 @@ public class SecurityService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
-        Student student=studentRepository.findByName(userName).orElseThrow(()->new UsernameNotFoundException("no user for this username"));
+        Student student=studentRepository.findByFirstName(userName).orElseThrow(()->new UsernameNotFoundException("user not found"));
         return new UserDetailImpl(student);
     }
 }

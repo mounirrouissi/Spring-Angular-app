@@ -1,11 +1,18 @@
 package com.example.demo.controller;
 
-import com.example.demo.dto.SignInDto;
+import com.example.demo.dto.JwtSignInResponse;
+import com.example.demo.dto.SignInDtoRequest;
 import com.example.demo.dto.StudentDto;
 import com.example.demo.models.Student;
 import com.example.demo.repositories.StudentRepository;
+import com.example.demo.security.JwtUtil;
+import com.example.demo.security.SecurityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -22,16 +29,30 @@ import java.util.List;
 public class StudentController {
 
     private StudentRepository studentRepository;
-
+    @Autowired
+    private SecurityService securityService;
+@Autowired
+private AuthenticationManager authenticationManager;
     @Autowired
     private StudentService studentService;
 
+@Autowired
+private JwtUtil jwtUtil;
+    @PostMapping("/signIn")
+    public ResponseEntity sign(@RequestBody SignInDtoRequest signInDtoRequest){
+        try {
+            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(signInDtoRequest.getFirstName()
+                                                                                        , signInDtoRequest.getPassword()));
+        } catch (AuthenticationException e) {
+            e.printStackTrace();
+        }
+        final UserDetails userDetails=securityService.loadUserByUsername(signInDtoRequest.getFirstName());
 
-    @PostMapping("/sign_in")
-    public ResponseEntity sign(@RequestBody SignInDto signInDto){
-
-        return ResponseEntity.ok(signInDto);
+        String jwt=jwtUtil.generateToken(userDetails);
+        return ResponseEntity.ok(new JwtSignInResponse(jwt));
     }
+
+
     @GetMapping("/students")
     public List<StudentDto> allStudents() {
         return studentService.findStudents();

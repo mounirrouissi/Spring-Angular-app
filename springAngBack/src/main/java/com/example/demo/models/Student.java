@@ -20,16 +20,16 @@ public class Student {
     @GeneratedValue
     private Long id;
     @Column
-    private String first_Name;
+    private String firstName;
     @Column
-    private String last_Name;
+    private String lastName;
     @OneToMany(mappedBy = "student", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonIgnore
     private List<Course> courses;
 private String password;
     public Student(Long id, String fist, String last) {
         this.id = id;
-        this.first_Name = fist;
-        this.last_Name = last;
+        this.firstName = fist;
+        this.lastName = last;
     }
 }
