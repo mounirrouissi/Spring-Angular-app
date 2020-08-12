@@ -25,7 +25,6 @@ import java.util.List;
  */
 
 @RestController
-@CrossOrigin
 public class StudentController {
 
     private StudentRepository studentRepository;

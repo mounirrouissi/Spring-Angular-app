@@ -12,7 +12,6 @@ import java.util.List;
 
 
 @RestController
-@CrossOrigin
 public class CourseController {
 
     private com.example.demo.repositories.CourseRepository CourseRepository;
