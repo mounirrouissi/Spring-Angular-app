@@ -5,6 +5,6 @@ import lombok.Data;
 
 @Data
 public class SignInDtoRequest {
-    private String firstName;
+    private String username;
     private String password;
 }

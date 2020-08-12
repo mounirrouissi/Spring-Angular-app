@@ -29,7 +29,6 @@ import { MainComponent } from './main/main.component';
   ],
   imports: [
     BrowserModule,
-
     HttpClientModule,
     FormsModule,
     AppRoutingModule,

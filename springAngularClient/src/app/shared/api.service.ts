@@ -10,7 +10,7 @@ export class ApiService {
 
 
   login(signInPayload:signIn) {
-return this.http.post<Student>(this.url+"/sign_in",signInPayload);
+return this.http.post<signIn>(this.url+"/signIn",signInPayload);
   }
 
 

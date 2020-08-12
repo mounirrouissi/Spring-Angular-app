@@ -56,8 +56,7 @@ public class CourseService {
     }
 
     public Course findById(Long id) {
-        Course Course = CourseRepository.findById(id).get();
-        return Course;
+      return CourseRepository.findById(id).get();
     }
 
     public CourseDto updateCourse(Long id, CourseDto CourseDto) {
@@ -67,9 +66,9 @@ public class CourseService {
         return CourseDto;
     }
 
-    public void delete(Course Course)
+    public void delete(Long id)
     {
-        CourseRepository.deleteById(Course.getCourseId());
+        CourseRepository.deleteById(id);
     }
 
     public CourseDto toDto(Course Course)

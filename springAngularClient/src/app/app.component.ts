@@ -2,7 +2,7 @@ import { Router } from '@angular/router';
 import { Component } from '@angular/core';
 import { Student, signIn } from './shared/model';
 import { ApiService } from './shared/api.service';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { bindCallback } from 'rxjs';
 
 @Component({
@@ -17,10 +17,10 @@ export class AppComponent {
   signInPayload:signIn;
   Router: Router;
   loginForm:FormGroup;
-  constructor(private apiService:ApiService) {
-    this.loginForm=new FormGroup({
-username:new FormControl,
-password:new FormControl
+  constructor(private apiService:ApiService,fb :FormBuilder) {
+    this.loginForm=fb.group({
+username:new FormControl("", Validators.required),
+password:new FormControl("", Validators.required)
     });
     this.signInPayload={
       username:'',
@@ -38,14 +38,14 @@ password:new FormControl
     this.apiService.login(this.signInPayload).subscribe(
       async res=>{
           this.message="sign in successfully ";
-          this.Router.navigateByUrl("/main")
+           this.Router.navigateByUrl("/main")
             },
               error => {
                 alert("error  occured");
               }
             );
 
-     
+
 
 
 

@@ -30,24 +30,26 @@ public class StudentController {
     private StudentRepository studentRepository;
     @Autowired
     private SecurityService securityService;
-@Autowired
-private AuthenticationManager authenticationManager;
+    @Autowired
+    private AuthenticationManager authenticationManager;
     @Autowired
     private StudentService studentService;
 
-@Autowired
-private JwtUtil jwtUtil;
+    @Autowired
+    private JwtUtil jwtUtil;
+
+
     @PostMapping("/signIn")
-    public ResponseEntity sign(@RequestBody SignInDtoRequest signInDtoRequest){
+    public ResponseEntity<?> sign(@RequestBody SignInDtoRequest signInDtoRequest) {
         try {
-            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(signInDtoRequest.getFirstName()
-                                                                                        , signInDtoRequest.getPassword()));
+            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(signInDtoRequest.getUsername()
+                    , signInDtoRequest.getPassword()));
         } catch (AuthenticationException e) {
             e.printStackTrace();
         }
-        final UserDetails userDetails=securityService.loadUserByUsername(signInDtoRequest.getFirstName());
+        final UserDetails userDetails = securityService.loadUserByUsername(signInDtoRequest.getUsername());
 
-        String jwt=jwtUtil.generateToken(userDetails);
+        String jwt = jwtUtil.generateToken(userDetails);
         return ResponseEntity.ok(new JwtSignInResponse(jwt));
     }
 
@@ -57,10 +59,10 @@ private JwtUtil jwtUtil;
         return studentService.findStudents();
     }
 
+
     @GetMapping("/students/{id}")
     public StudentDto findStudentById(@PathVariable Long id) {
-        Student student= studentService.findById(id);
-        return studentService.toDto(student);
+        return studentService.toDto(studentService.findById(id));
     }
 
 
@@ -69,20 +71,20 @@ private JwtUtil jwtUtil;
         return studentService.createStudent(studentDto);
     }
 
+
     @PutMapping("/students/{id}/update")
-    public StudentDto update(@PathVariable("id")Long id, @RequestBody @Validated StudentDto studentDto , BindingResult result)
-    {
-        if(result.hasErrors()){
+    public StudentDto update(@PathVariable("id") Long id, @RequestBody @Validated StudentDto studentDto, BindingResult result) {
+        if (result.hasErrors()) {
             System.out.println("ERROR in Validation");
             throw new RuntimeException("BAD REQUEST. PLEASE CHECK YOUR OBJECT");
         }
         return studentService.updateStudent(id, studentDto);
     }
 
+
     @DeleteMapping("/students/{id}")
     public ResponseEntity deleteStudent(@PathVariable Long id) {
-        Student student=studentRepository.findById(id).get();
-        studentService.delete(student);
+        studentService.delete(id);
         return ResponseEntity.accepted().build();
     }
 

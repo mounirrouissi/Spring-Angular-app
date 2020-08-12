@@ -43,7 +43,7 @@ private AuthenticationManager authenticationManager;
 
 
     public void login(SignInDtoRequest signInDtoRequest){
-        Authentication auth=authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(signInDtoRequest.getFirstName(), signInDtoRequest.getPassword()));
+        Authentication auth=authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(signInDtoRequest.getUsername(), signInDtoRequest.getPassword()));
         SecurityContextHolder.getContext().setAuthentication(auth);
     }
 
@@ -88,9 +88,9 @@ private AuthenticationManager authenticationManager;
         return studentDto;
     }
 
-    public void delete(Student student)
+    public void delete(Long id)
     {
-        studentRepository.deleteById(student.getId());
+        studentRepository.deleteById(id);
     }
 
 public StudentDto toDto(Student student)

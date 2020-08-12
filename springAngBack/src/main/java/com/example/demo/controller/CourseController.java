@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import com.example.demo.dto.CourseDto;
 import com.example.demo.models.Course;
+import com.example.demo.repositories.CourseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
@@ -14,7 +15,6 @@ import java.util.List;
 @RestController
 public class CourseController {
 
-    private com.example.demo.repositories.CourseRepository CourseRepository;
 
     @Autowired
     private CourseService CourseService;
@@ -51,8 +51,8 @@ public class CourseController {
 
     @DeleteMapping("/Courses/{id}")
     public ResponseEntity deleteCourse(@PathVariable Long id) {
-        Course Course = CourseRepository.findById(id).get();
-        CourseService.delete(Course);
+        Course Course = CourseService.findById(id);
+        CourseService.delete(id);
         return ResponseEntity.accepted().build();
     }
 
